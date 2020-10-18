@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hank's Personal Blog</title>
+    <description>Front-End Engineer, Runner, Web Extension developer.</description>
+    <link>https://momane.com/</link>
+    <atom:link href="https://momane.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>2020-10-18</pubDate>
+    <lastBuildDate>Sun, 18 Oct 2020 02:20:39 +0000</lastBuildDate>
+    <generator>Jekyll v3.8.7</generator>
+    
+      <item>
+        <title>How to copy image and text to clipboard with JavaScript</title>
+        <description>&lt;p&gt;I used to saw my colleague add a 30kb lib only to implement a copy function
+ that when user clicks on a text, copy it to the clipboard.&lt;/p&gt;
+
+&lt;p&gt;And I also saw someone still trying to use flash or Clipboard lib to do same thing.&lt;/p&gt;
+
+&lt;h4 id=&quot;here-is-how-to-copy-text-to-your-clipboard-with-javascript&quot;&gt;Here is how to copy text to your clipboard with JavaScript&lt;/h4&gt;
+&lt;p&gt;with just several lines of code. And it’s cross browser
+and device. No need to any 3rd party lib.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;copyToClipboard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+ &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;textarea&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;ta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+ &lt;span class=&quot;c1&quot;&gt;//hide it&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;ta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;padding&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;ta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;border&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;ta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;outline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;ta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;boxShadow&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;c1&quot;&gt;//select the text&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;ta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;focus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;ta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;execCommand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;removeChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;it’s very simple, you just append an invisible textarea to the page, set value as the text you want to copy,
+and run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;document.execCommand('copy')&lt;/code&gt;. Then remove the textarea from the page.&lt;/p&gt;
+
+&lt;h4 id=&quot;here-is-how-to-copy-image-to-your-clipboard-with-javascript&quot;&gt;here is how to copy image to your clipboard with JavaScript&lt;/h4&gt;
+&lt;p&gt;Note that this one only works on Chrome and Edge right now (2020-10)
+https://caniuse.com/mdn-api_clipboarditem&lt;/p&gt;
+
+&lt;p&gt;This requires you to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;canvas&lt;/code&gt; to port image to blob first.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;imageToBlob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;imageURL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;2d&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;crossOrigin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;imageURL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onload&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;naturalWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;naturalHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;drawImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toBlob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;blob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// here the image is a blob&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;blob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;image/png&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.75&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Clipboard&lt;/code&gt; API to do the magic&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;copyImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;imageURL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blob&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;imageToBlob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;imageURL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ClipboardItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;image/png&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blob&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clipboard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Simple as that.&lt;/p&gt;
+
+</description>
+        <pubDate>2020-10-18</pubDate>
+        <link>https://momane.com/how-to-copy-image-and-text-to-clipboard-with-javascript</link>
+        <guid isPermaLink="true">https://momane.com/how-to-copy-image-and-text-to-clipboard-with-javascript</guid>
+        
+        <category>javascript</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+      <item>
+        <title>如何在电脑上调试手机真机网页以及微信浏览器网页</title>
+        <description>&lt;p&gt;遇到个需求需要调试在微信中打开的网页。之前没有做过，搜了一圈那个所谓的在微信对话框中打开debugx5.qq.com的方法已经过时无用， 打开就显示你所使用对内核非X5内核。至于TBStool更是在2017年就已经停止更新，打开就闪退，浪费时间安装。&lt;/p&gt;
+
+&lt;p&gt;看来因为开发人员对QQ搞出来的X5内核怨声载道，所以微信不得不妥协，弃用了X5内核作为内置浏览器内核了。&lt;/p&gt;
+
+&lt;p&gt;至于spy-debugger等工具，我嫌麻烦也没装。&lt;/p&gt;
+
+&lt;p&gt;找半天找不到有用的方法，好在同样的问题在手机上的Chrome里面打开也存在，于是就想先在Chrome里调试，万一能一起修复了呢。&lt;/p&gt;
+
+&lt;p&gt;没想到就发现了Chrome调试工具居然也可以调试微信浏览器里打开的页面。看起来微信内建浏览器也采用了Chromium内核了。&lt;/p&gt;
+
+&lt;p&gt;以下步骤同时适用于在电脑上调试手机浏览器网页调试和微信内建浏览器网页， 目前只限Android系统。iPhone还没去看。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;打开手机的开发者模式，这个各个手机打开方式都差不多，通过多次点击版本号来开启。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在开发者模式里面打开 USB 调试功能&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;把你要调试的网址发送到微信对话框里，然后点击打开&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;将手机通过USB数据线连接到电脑&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在电脑上打开Chrome浏览器&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;新建一个标签页，输入网址 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chrome://inspect/#devices&lt;/code&gt;。以前你需要在 Chrome 的开发者工具里面通过点击多个菜单来打开，Chrome现在将这个页面独立出来了，体验更佳。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;这时候你的手机应该会收到 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;允许当前连接的设备访问手机数据&lt;/code&gt; 的通知，点击允许即可&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在电脑端 Chrome 的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chrome://inspect/#devices&lt;/code&gt; 里面就应该能看到你手机 Chrome 里面打开的页面了&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;同时如果你已经在微信内建浏览器里打开了网页，你应该也能看到一个名为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;com.tencent.mm&lt;/code&gt; 的浏览器里面打开了一个页面。
+&lt;img src=&quot;../img/chrome-mobile-debug-devices.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;点击网址下面的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inspect&lt;/code&gt; 就可以打开调试页面，其拥有电脑端Chrome开发工具的几乎所有调试功能。
+&lt;img src=&quot;../img/chrome-mobile-debug-website.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;不得不说发现这点还是挺惊喜的。&lt;/p&gt;
+
+</description>
+        <pubDate>2020-10-18</pubDate>
+        <link>https://momane.com/debug-webpage-on-mobile-and-wechat-in-chrome</link>
+        <guid isPermaLink="true">https://momane.com/debug-webpage-on-mobile-and-wechat-in-chrome</guid>
+        
+        <category>debugging</category>
+        
+        <category>mobile</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+      <item>
+        <title>Shout out to Jetbrains IDE</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://www.jetbrains.com/?from=one-click-extensions-manager&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;../assets/jetbrains.svg&quot; style=&quot;width:200px;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I write this post because &lt;a href=&quot;https://www.jetbrains.com/?from=one-click-extensions-manager&quot;&gt;Jetbrains&lt;/a&gt; just gave me full access to all its tools as an open source project developer.
+So I just want to say thanks with this post.&lt;/p&gt;
+
+&lt;p&gt;After I tried Webstorm for several days, I found it’s much better than VS Code.&lt;/p&gt;
+
+&lt;p&gt;What am I saying, Webstorm is a commercial software, while VS Code is open source and free. 😅&lt;/p&gt;
+
+&lt;p&gt;Anyway, I found myself coding much faster with Webstorm and other &lt;a href=&quot;https://www.jetbrains.com/?from=one-click-extensions-manager&quot;&gt;Jetbrains&lt;/a&gt; tools. Like, I don’t have to pick and configure all those extensions carefully to make so that it won’t popup css selector when I’m coding JavaScript. Webstorm also has built-in spell check, it’s like a life saver for non-native English speaker.&lt;/p&gt;
+
+&lt;p&gt;Some people might think that VS code eats less RAM than Webstorm, also faster when launching.  While  my computer has 32 GB RAM and i7, so I never need to care about the RAM. Plus, if you install and enable too many extensions, you can also notice that VS Code takes a lot of RAM too.&lt;/p&gt;
+
+&lt;p&gt;And I barely need to code some stuff within 30 sec, so the launching time is not an issue to me too. This is not mean I’m not gonna use VS Code, it’s still great, especially it can edit any programming languages, with extensions.&lt;/p&gt;
+
+&lt;p&gt;Its price is also reasonable, for individual, most of the tools are between $59 - $69 for the first year, cheaper for the next years.&lt;/p&gt;
+
+&lt;p&gt;It also has many free plans, students, teachers, etc. If you are an active open source developer, you can even ask for a free license.&lt;/p&gt;
+
+&lt;p&gt;Like me, since I have this small open source project &lt;a href=&quot;https://github.com/hankxdev/one-click-extensions-manager&quot;&gt;one click extensions manager&lt;/a&gt;, it has more than 30k users.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.jetbrains.com/?from=one-click-extensions-manager&quot;&gt;Jetbrains&lt;/a&gt; gives me full access to all its tools for a year, and can be re-subscribed every year.&lt;/p&gt;
+
+&lt;p&gt;So if you also have open source project, try to apply for its license and try this great IDE :D&lt;/p&gt;
+
+</description>
+        <pubDate>2020-10-18</pubDate>
+        <link>https://momane.com/shout-out-to-jetbrains-ide</link>
+        <guid isPermaLink="true">https://momane.com/shout-out-to-jetbrains-ide</guid>
+        
+        <category>IDE</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+      <item>
+        <title>Use git archive to zip your source code</title>
+        <description>&lt;p&gt;To zip compiled project file is easy, normally I just use &lt;a href=&quot;&quot;&gt;archivejs&lt;/a&gt;, write a small nodejs script, and then add a script in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;And then I need to zip the source code only. Exclude the dist folder, the huge &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;node_modules&lt;/code&gt; folder and other folders.&lt;/p&gt;
+
+&lt;p&gt;Basically just source code and exclude everything in .gitignore file.&lt;/p&gt;
+
+&lt;p&gt;I tried to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;archivejs&lt;/code&gt;’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;glob&lt;/code&gt; api. Like so:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;archive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;glob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;ignore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;folder/**&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;But I could not make it works, it either zip nothing or zip everything in my folder, I think it’s because the path that I set is not correct. And I don’t want to 
+spend too much time on reading and exploring archivejs’s api doc.&lt;/p&gt;
+
+&lt;p&gt;So I came to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;zip&lt;/code&gt; command in terminal. To use it is very simple, just use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-x&lt;/code&gt; to exclude file, like this&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;zip &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; output.zip directory &lt;span class=&quot;nt&quot;&gt;-x&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\*\*&lt;/span&gt;/&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;/node_modules/&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Which is great. But the command is too long and if there are many files you want to exclude, you will need to write down them every time.&lt;/p&gt;
+
+&lt;p&gt;At the same time I found that with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git archive&lt;/code&gt; I can do this easily. so just run&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git archive &lt;span class=&quot;nt&quot;&gt;--format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;zip HEAD &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; zipfile.zip
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;it will pack all your source code into zip file, exclude everything in the .gitignore file. Super neat.&lt;/p&gt;
+</description>
+        <pubDate>2020-10-18</pubDate>
+        <link>https://momane.com/how-to-zip-only-source-code</link>
+        <guid isPermaLink="true">https://momane.com/how-to-zip-only-source-code</guid>
+        
+        <category>git</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+      <item>
+        <title>how to use jQuery with TypeScript</title>
+        <description>&lt;p&gt;It’s 2020, why do you still need to use jQuery?&lt;/p&gt;
+
+&lt;p&gt;Yeah, jQuery has 53.8k stars on Github. And still, there are more than 97% of websites are using it.&lt;/p&gt;
+
+&lt;p&gt;Even if you don’t want to use it in your fancy project. It’s still a good choice to use it when you are building a demo, prototype, or some small side project. I mean, when you are configuring your fancy project with wepack, react/vue/angular, babel, I already have done a small page which can send request to the API and show the result on the page.&lt;/p&gt;
+
+&lt;p&gt;Anyway, if you want to use jQuery with TypeScript. Here are the steps that you need to do.&lt;/p&gt;
+
+&lt;h4 id=&quot;add-jquery&quot;&gt;add jquery&lt;/h4&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yarn add jquery
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;add-jquery-types&quot;&gt;add jquery types&lt;/h3&gt;
+
+&lt;p&gt;this will suppress VS Code complains that it can not find jquery types&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yarn add @types/jquery
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;config-tsconfigjson-to-suppress-another-warning-message&quot;&gt;config tsconfig.json to suppress another warning message&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;can only be default-imported using the ‘allowSyntheticDefaultImports’ flagts(1259)
+index.d.ts(35, 1): This module is declared with using ‘export =’, and can only be used with a default import when using the ‘allowSyntheticDefaultImports’ flag.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;goto your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tsconfig.json&lt;/code&gt; file, add one line in your the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;compilerOptions&lt;/code&gt; block. if you don’t have this tsconfig file in your project’s root folder, then create one.&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nl&quot;&gt;&quot;allowSyntheticDefaultImports&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then you can use jquery in your ts file like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;jquery&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ajax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;finnally&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>2020-10-18</pubDate>
+        <link>https://momane.com/how-to-use-jquery-with-typescript</link>
+        <guid isPermaLink="true">https://momane.com/how-to-use-jquery-with-typescript</guid>
+        
+        <category>TypeScript</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+      <item>
+        <title>用 Taro 和 Vue 写了一个微信小程序</title>
+        <description>&lt;p&gt;最近尝试写微信小程序，毕竟是现在的趋势。然后发现因为入场太晚，各种轮子已经造得遍地飞了。比如这里有一个框架，出自京东，叫做Taro，它的目的是写一份代码，就可以在诸如微信、支付宝、字节跳动（它家的什么app支持小程序？）等端作为小程序运行。&lt;/p&gt;
+
+&lt;p&gt;于是拿来试了以下。我本来只熟悉Vue的，这个Taro原生支持React，代码风格也都是React的样式。虽说现在3.0以上支持Vue了，可是要做的时候还是有一些转换成本。&lt;/p&gt;
+
+&lt;p&gt;然后框架本身也还存在一些bug，不过一次编写，多端运行还是挺有意思的。&lt;/p&gt;
+
+&lt;p&gt;项目地址：https://github.com/hankxdev/taro-v2ex&lt;/p&gt;
+
+&lt;p&gt;以下内容来自README：&lt;/p&gt;
+
+&lt;h3 id=&quot;taro--taro-ui--vue--v2ex-api-多端小程序&quot;&gt;Taro + Taro-UI + Vue + V2EX API 多端小程序&lt;/h3&gt;
+
+&lt;p&gt;如题，这是一个使用了这几个技术的练习项目。我是第一次使用Taro和写微信小程序。Taro官方有个&lt;a href=&quot;https://taro-docs.jd.com/taro/docs/guide/&quot;&gt;渐进式教程&lt;/a&gt;，使用的也是V2EX的API。&lt;/p&gt;
+&lt;h4 id=&quot;技术栈&quot;&gt;技术栈：&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/NervJS/taro&quot;&gt;Taro&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/NervJS/taro-ui&quot;&gt;Taro-UI&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://taro-ui-vue.fontend.com/&quot;&gt;Taro-ui-vue&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/igaozp/V2EX-API&quot;&gt;V2EX API&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Vue&lt;/li&gt;
+  &lt;li&gt;Vuex&lt;/li&gt;
+  &lt;li&gt;SCSS&lt;/li&gt;
+  &lt;li&gt;Typescript&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;本地运行和测试&quot;&gt;本地运行和测试&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yarn&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yarn dev:weapp&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;因为调用了v2ex 的API，用自己的微信小程序ID的话，需要去后台设置一下域名白名单，否则 API 调用会失败。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;比教程多了一些的是&quot;&gt;比教程多了一些的是：&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;代码完整。官方教程的代码比较零散，甚至有些跑不通。&lt;/li&gt;
+  &lt;li&gt;用户详情页面和节点详情页面&lt;/li&gt;
+  &lt;li&gt;全部使用真正的V2EX API 而不是使用自定义数据&lt;/li&gt;
+  &lt;li&gt;自定义 Tabbar&lt;/li&gt;
+  &lt;li&gt;使用了Taro-UI来做界面&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;项目存在的问题&quot;&gt;项目存在的问题：&lt;/h4&gt;
+&lt;p&gt;以下是我知道的主要问题。大佬们如果发现新问题或者知道这些问题的答案，欢迎提 issues 或者 PR， 望不吝赐教。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;几个页面在切换的时候并不会刷新。这里怀疑是Taro的bug，文档中写的 &lt;a href=&quot;https://nervjs.github.io/taro/docs/vue/#onshow-1&quot;&gt;onShow&lt;/a&gt; 方法并不能在页面显示的时候被成功调用。&lt;/li&gt;
+  &lt;li&gt;不怎么好看。因为主要用来熟悉Taro以及微信小程序和多端小程序开发，因此并未在界面上花功夫，几乎没有怎么写样式。使用的全都是Taro-UI 默认的组件。&lt;/li&gt;
+  &lt;li&gt;有点卡。一方面v2ex并未提供分页的API。有些 endpoints 诸如获得节点列表、帖子列表等，都是一大堆上千条数据一下子全返回。网络慢的时候导致卡顿更加明显。&lt;/li&gt;
+  &lt;li&gt;TypeScript 使用并不规范。我很少写 TypeScript。也一直懒得学，因此基本上都是用JavaScript 的写法在写 TypeScript。同样，写好或者学习 TypeScript 也并不是我写本项目的目的。略过。&lt;/li&gt;
+  &lt;li&gt;CustomTabBar 的实现并不规范。现在的做法是写一个 CustomTabBar, 然后放置进每个页面中。正确的做法应该是。
+    &lt;ol&gt;
+      &lt;li&gt;在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;app.config.ts&lt;/code&gt; 中的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tabList&lt;/code&gt; 里，设置 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;custom: true&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src&lt;/code&gt; 目录下新建 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;custome-tab-bar&lt;/code&gt; 文件夹&lt;/li&gt;
+      &lt;li&gt;在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;custome-tab-bar&lt;/code&gt; 下面添加 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.js&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.wxml&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.wxss&lt;/code&gt; 来自定义 tabbar 的样式和行为。 需要注意的是，这里不能直接写 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.vue&lt;/code&gt;，编译不出来的。&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/hankxdev/taro-v2ex/raw/master/readme/hot.png&quot; alt=&quot;hot&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>2020-10-18</pubDate>
+        <link>https://momane.com/a-wechat-mini-app-with-taro-vue</link>
+        <guid isPermaLink="true">https://momane.com/a-wechat-mini-app-with-taro-vue</guid>
+        
+        <category>wechat</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+      <item>
+        <title>How to fix Git show all file as modified in WSL</title>
+        <description>&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+&lt;p&gt;If you open your code in Windows, and run git in WSL bash, you will have a big chance to meet an issue that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git status&lt;/code&gt; shows all your
+file get modified.
+To fix the issue, run this in WSL bash:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; core.autocrlf &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Normally I use OSX, but today I have to go back to my Windows PC to try an extension on Edge.&lt;/p&gt;
+
+&lt;p&gt;I’m using WSL (that’s Windows Subsystem for Linux) to manage and build my projects.&lt;/p&gt;
+
+&lt;p&gt;After I cloned my repo from Github, I tried to create a new branch for Edge version. But after I ran &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git branch branchname&lt;/code&gt;
+, it told me that there were changes need to commit first.&lt;/p&gt;
+
+&lt;p&gt;So I ran &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git status&lt;/code&gt;, to check what’s been changed. Then I got this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../img/wsl-change-all.png&quot; alt=&quot;all files modified&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This was a simple app. so it’s basically showing that every file got modified. But I hadn’t do anything to any file.&lt;/p&gt;
+
+&lt;p&gt;It’s because I was using git in WSL, but I opened files in Windows system. So the line ending is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CRLF&lt;/code&gt;, but git thought it’s on Linux so the 
+line should ends with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LF&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;So the fix command will tell git to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CRLF&lt;/code&gt; and line ending.&lt;/p&gt;
+</description>
+        <pubDate>2020-10-18</pubDate>
+        <link>https://momane.com/how-to-fix-git-show-all-file-as-modified-in-wsl</link>
+        <guid isPermaLink="true">https://momane.com/how-to-fix-git-show-all-file-as-modified-in-wsl</guid>
+        
+        <category>windows</category>
+        
+        <category>ubuntu</category>
+        
+        <category>wsl</category>
+        
+        
+        <category>system</category>
+        
+      </item>
+    
+      <item>
+        <title>Change Ubuntu 20.04 update source to mirror site in China</title>
+        <description>&lt;p&gt;Ubuntu 20.04 has been released for a while, its code is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Focal Fossa&lt;/code&gt;.  Again, if you are in China, better change the update source to mirror sites.&lt;/p&gt;
+
+&lt;p&gt;This post is just a copy from &lt;a href=&quot;https://momane.com/change-ubuntu-18-04-source-to-china-mirror&quot;&gt;Change Ubuntu 18.04 update source to mirror site in China&lt;/a&gt;, and I just replaced the source url from thoes ones of 18.04 to 20.04&lt;/p&gt;
+
+&lt;p&gt;Here are several famous mirror sites. What you need todo is pick one from below and edit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;etc/apt/sources.list&lt;/code&gt;, replace the content in this file.&lt;/p&gt;
+
+&lt;p&gt;There are some links beend commented out.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;starts with&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;deb-src&lt;/code&gt; is for source code, without them the speed would be even faster&lt;/li&gt;
+  &lt;li&gt;the one with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;focal-proposed&lt;/code&gt; are just proposed updates, only enable them if you know the risk.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Better backup you &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;etc/apt/sources.list&lt;/code&gt; before you do this&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;163-netease&quot;&gt;163 (netease)&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;source:http://mirrors.163.com/&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;deb http://mirrors.163.com/ubuntu/ focal main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ focal-security main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ focal-updates main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ focal-backports main restricted universe multiverse
+# deb http://mirrors.163.com/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src http://mirrors.163.com/ubuntu/ focal main restricted universe multiverse
+# deb-src http://mirrors.163.com/ubuntu/ focal-security main restricted universe multiverse
+# deb-src http://mirrors.163.com/ubuntu/ focal-updates main restricted universe multiverse
+# deb-src http://mirrors.163.com/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src http://mirrors.163.com/ubuntu/ focal-backports main restricted universe multiverse
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;alibaba-aliyun&quot;&gt;alibaba (aliyun)&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;source:https://opsx.alibaba.com/mirror&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+# deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+# deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+# deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+# deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+# deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;And here are also two Chinese university mirror, use them only if you are in Chinese university.&lt;/p&gt;
+&lt;h4 id=&quot;tsinghua-university&quot;&gt;tsinghua university&lt;/h4&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;ustc-university-of-science-and-technology-of-china&quot;&gt;ustc (university of science and technology of China)&lt;/h4&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;deb https://mirrors.ustc.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb https://mirrors.ustc.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb https://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+deb https://mirrors.ustc.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+# deb https://mirrors.ustc.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal main restricted universe multiverse
+# deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+# deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+# deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+# deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Enjoy:)&lt;/p&gt;
+
+</description>
+        <pubDate>2020-10-18</pubDate>
+        <link>https://momane.com/change-ubuntu-20-04-source-to-china-mirror</link>
+        <guid isPermaLink="true">https://momane.com/change-ubuntu-20-04-source-to-china-mirror</guid>
+        
+        <category>windows</category>
+        
+        <category>ubuntu</category>
+        
+        
+        <category>system</category>
+        
+      </item>
+    
+      <item>
+        <title>How to fix You have to set a contact email in Chrome Web Store</title>
+        <description>&lt;p&gt;I have multiple accounts in Chrome Web Store to manage multiple Chrome extensions.&lt;/p&gt;
+
+&lt;p&gt;Today I found that one of my extension &lt;a href=&quot;https://chrome.google.com/webstore/detail/one-click-extensions-mana/pbgjpgbpljobkekbhnnmlikbbfhbhmem&quot;&gt;one click extensions manager&lt;/a&gt; did not get updated as schedule. which is very abnormal because it’s scheduled by Github action, and the log shows that the latest version had been submitted to the store several days ago.&lt;/p&gt;
+
+&lt;p&gt;In the dashboard it’s telling me to add a contract email in my account so that I could publish it. And I already added it long time ago.&lt;/p&gt;
+
+&lt;p&gt;After several meaningless refreshes and clicking on the save button, I realized it might because of my other accounts. So I switched to other accounts and found there is one account without contact email. And the item got published once I fixed this issue.&lt;/p&gt;
+
+&lt;p&gt;So weird because it never asks me to add contact email before. And the store hint is so unclear, it needs you to add contact email on every account, not just the current one.&lt;/p&gt;
+
+&lt;p&gt;Honestly, the new Chrome web store dashboard is not as easy to use as the old one.
+Only the UI is fresher than before.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../img/chrome-web-store-ask-contact-email.png&quot; style=&quot;margin-bottom:15px;&quot; alt=&quot;chrome web store asks for contact email&quot; width=&quot;800&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Also, got an email from Microsoft Edge team, they ask me to submit my extension to Edge store, as Edge is using Chromium now. So if you have published Chrome extension before, you can try 
+to submit it to Edge store too. The process would take less than 30 min to do it.&lt;/p&gt;
+
+&lt;p&gt;And, the Edge store dashboard is hard to use too, especially if your extension surppots multiple language, you will need to set information like logo, screenshot, description for every
+language. insane, right?.&lt;/p&gt;
+
+</description>
+        <pubDate>2020-10-18</pubDate>
+        <link>https://momane.com/fix-you-have-to-set-a-contract-email-chrome-web-store</link>
+        <guid isPermaLink="true">https://momane.com/fix-you-have-to-set-a-contract-email-chrome-web-store</guid>
+        
+        <category>chrome extension</category>
+        
+        <category>web extension</category>
+        
+        
+        <category>programming</category>
+        
+        <category>chrome</category>
+        
+      </item>
+    
+      <item>
+        <title>My First LEGO</title>
+        <description>&lt;p&gt;Got a LEGO gift from an old friend. Finished it in two weeks :D Love it a lot.&lt;/p&gt;
+
+&lt;div&gt;&lt;img src=&quot;../_site/../img/friends_lego.jpeg&quot; style=&quot;margin-bottom:15px;&quot; alt=&quot;LEGO Friends&quot; width=&quot;800&quot; /&gt;&lt;/div&gt;
+&lt;div&gt;&lt;img src=&quot;../_site/../img/friends_lego1.jpeg&quot; style=&quot;margin-bottom:15px;&quot; alt=&quot;LEGO Friends&quot; width=&quot;800&quot; /&gt;&lt;/div&gt;
+&lt;div&gt;&lt;img src=&quot;../_site/../img/friends_lego2.jpeg&quot; style=&quot;margin-bottom:15px;&quot; alt=&quot;LEGO Friends&quot; width=&quot;800&quot; /&gt;&lt;/div&gt;
+&lt;div&gt;&lt;img src=&quot;../_site/../img/friends_lego3.jpeg&quot; style=&quot;margin-bottom:15px;&quot; alt=&quot;LEGO Friends&quot; width=&quot;800&quot; /&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>2020-10-18</pubDate>
+        <link>https://momane.com/my-first-lego-friends</link>
+        <guid isPermaLink="true">https://momane.com/my-first-lego-friends</guid>
+        
+        <category>lego</category>
+        
+        
+        <category>life</category>
+        
+      </item>
+    
+  </channel>
+</rss>
